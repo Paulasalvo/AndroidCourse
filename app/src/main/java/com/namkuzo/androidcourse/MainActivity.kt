@@ -11,6 +11,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Text(text = stringResource(id = R.string.app_name))
+            Text(text = stringResource(id = R.string.app_name))
+            Text(text = stringResource(id = R.string.app_name))
         }
     }
 }
