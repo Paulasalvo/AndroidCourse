@@ -1,3 +1,4 @@
+import com.namkuzo.androidcourse.data.Answer
 import com.namkuzo.androidcourse.data.Message
 
 /**
@@ -71,5 +72,12 @@ object SampleData {
             "Lexi",
             "Have you tried writing build.gradle with KTS?"
         ),
+    )
+
+    val answerSample = listOf(
+        Answer(1, "This is answer A"),
+        Answer(2, "This is answer B"),
+        Answer(3, "This is answer C"),
+        Answer(4, "This is answer D")
     )
 }

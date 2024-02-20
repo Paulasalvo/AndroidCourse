@@ -1,4 +1,4 @@
-package com.namkuzo.androidcourse.ui.theme.component
+package com.namkuzo.androidcourse.ui.component
 
 import SampleData
 import androidx.compose.foundation.lazy.LazyColumn
