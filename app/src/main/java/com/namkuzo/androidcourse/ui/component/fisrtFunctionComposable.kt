@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedButton
@@ -29,9 +31,8 @@ import com.namkuzo.androidcourse.ui.theme.AndroidCourseTheme
 fun Greeting(
     name: String,
     modifier: Modifier = Modifier,
-    onExpanded: () -> Unit,
-    expanded: Boolean
 ) {
+    var expanded by remember { mutableStateOf(false)}
     val extraPadding = if (expanded) 48.dp else 0.dp
         Surface(
             modifier.padding(horizontal = 8.dp, vertical = 4.dp),
@@ -45,7 +46,7 @@ fun Greeting(
                     Text(text = name)
                 }
                 ElevatedButton(
-                    onClick = onExpanded,
+                    onClick = { expanded = !expanded}
                 ) {
                     Text(if (expanded) "Show less" else "Show more")
                 }
@@ -74,24 +75,11 @@ fun MyApp(modifier: Modifier = Modifier) {
 @Composable
 fun Greetings(
     modifier: Modifier = Modifier,
-    names: List<String> = listOf("World", "Compose")
+    names: List<String> = List(1000) { "$it" }
 ) {
-    Surface(
-        modifier = modifier,
-        color = MaterialTheme.colorScheme.background
-    ) {
-        Column(modifier.padding(vertical = 4.dp)) {
-
-            for (name in names) {
-                var expanded by remember { mutableStateOf(false)}
-                Greeting(
-                    name = name,
-                    onExpanded = {
-                        expanded = !expanded
-                    },
-                    expanded = expanded
-                )
-            }
+    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
+        items(items = names) { name ->
+            Greeting(name = name)
         }
     }
 }
