@@ -1,5 +1,6 @@
 package com.namkuzo.androidcourse.ui.component
 
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -45,6 +47,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -268,11 +271,11 @@ fun MySootheAppPortrait() {
 @Composable
 private fun SootheNavigationRail(modifier: Modifier = Modifier) {
     NavigationRail (
+        modifier = modifier.padding(start = 8.dp, end = 8.dp),
         containerColor = MaterialTheme.colorScheme.background,
-        modifier = modifier.padding(start= 8.dp, end= 8.dp)
     ){
         Column (
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier.fillMaxHeight(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
 
@@ -315,12 +318,14 @@ private fun SootheNavigationRail(modifier: Modifier = Modifier) {
 @Composable
 fun MySootheAppLandscape(){
    AndroidCourseTheme {
-       Surface (color = MaterialTheme.colorScheme.background){
+       Surface ( color = MaterialTheme.colorScheme.background) {
            Row {
                SootheNavigationRail()
                HomeScreen()
            }
        }
+
+
    }
 }
 
